@@ -1,0 +1,51 @@
+@use './app/variables' as *;
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+:root {
+    --color-body-bg: #{c(body-bg)};
+    --color-text-on-dark: #{c(text-on-dark)};
+    --radius-md: #{map-get($radius, md)};
+}
+
+html {
+    font-size: $base-font-size; // 16px
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: c(body-bg);
+    color: c(text-on-dark);
+    font-family: $font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+// headings
+h1, h2, h3 {
+    margin: 0 0 map-get($space, md) 0;
+    color: c(text-on-dark);
+    font-family: $font-heading;
+}
+
+h1 { @include font-from-map(h1); }
+h2 { @include font-from-map(h2); }
+h3 { @include font-from-map(h3); }
+p  { @include font-from-map(p); }
+
+
+@include respond(mobile) {
+    h1 { font-size: map-get(map-get($typography-mobile, h1), size); }
+    h2 { font-size: map-get(map-get($typography-mobile, h2), size); }
+    h3 { font-size: map-get(map-get($typography-mobile, h3), size); }
+    p  { font-size: map-get(map-get($typography-mobile, p), size); }
+}

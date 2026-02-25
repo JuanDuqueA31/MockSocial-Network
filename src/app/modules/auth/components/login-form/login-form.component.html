@@ -1,0 +1,23 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="text" formControlName="email" placeholder="Email">
+        <div class="error" *ngIf="email?.touched && email?.invalid">
+        <div *ngIf="email?.errors?.['required']">*El email es obligatorio.</div>
+        <div *ngIf="email?.errors?.['email']">*Ingresa un email válido.</div>
+        <div *ngIf="email?.errors?.['minlength']">*El email es muy corto.</div>
+        </div>
+    </div>
+
+    <div>
+        <input type="password" formControlName="password" placeholder="Password">
+        <div class="error" *ngIf="password?.touched && password?.invalid">
+        <div *ngIf="password?.errors?.['required']">*La contraseña es obligatoria.</div>
+        <div *ngIf="password?.errors?.['minlength']">*La contraseña es muy corta.</div>
+        </div>
+    </div>
+
+    <div class="error" *ngIf="loginError">*{{ loginError }}</div>
+    <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+</form>
+
+<button (click)="toggleForm.emit()">I do not have an account</button>

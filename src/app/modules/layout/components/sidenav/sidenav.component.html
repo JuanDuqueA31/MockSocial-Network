@@ -1,0 +1,19 @@
+<div class="floating-toggle">
+    <mat-slide-toggle 
+            [checked]="showHeader$ | async"
+            (change)="layoutService.toggleHeader()">
+        Header
+    </mat-slide-toggle>
+
+    <mat-slide-toggle 
+            [checked]="showFooter$ | async"
+            (change)="layoutService.toggleFooter()">
+        Footer
+    </mat-slide-toggle>
+
+    <mat-slide-toggle
+            [checked]="isAdminToggle"
+            (change)="onAdminToggle($event)">
+        Admin Mode
+    </mat-slide-toggle>
+</div>

@@ -1,0 +1,97 @@
+<div class="chat-wrapper">
+
+
+    <button
+        *ngIf="isOpen"
+        class="chat-floating-btn"
+        type="button"
+        (click)="close()"
+        aria-label="Cerrar chat"
+        title="Cerrar chat"
+    >
+        ✕
+    </button>
+
+    <!-- Ventana de chat -->
+    <aside
+        class="chat-window"
+        *ngIf="isOpen"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Chat"
+    >
+
+        <!-- Header -->
+        <header class="chat-header">
+
+        <ng-container *ngIf="persona?.user as user">
+            <div class="person">
+            <img
+                *ngIf="user.image"
+                [src]="user.image"
+                [alt]="user.username"
+                class="person-avatar"
+            />
+
+            <div class="person-info">
+                <div class="person-name">
+                {{ user.firstName }} {{ user.lastName }}
+                </div>
+
+                <div class="person-sub">
+                {{ user.company?.title || user.username }}
+                </div>
+            </div>
+            </div>
+        </ng-container>
+
+        <button
+            class="close-btn"
+            type="button"
+            (click)="close()"
+            aria-label="Cerrar chat"
+            title="Cerrar"
+        >
+            ✕
+        </button>
+
+        </header>
+
+        <!-- Mensajes -->
+        <div class="chat-messages" #scrollContainer>
+        <ng-container *ngFor="let m of messages; trackBy: trackByIndex">
+            <div
+            class="msg-row"
+            [class.from-user]="m.role === 'user'"
+            [class.from-assistant]="m.role === 'assistant'"
+            >
+            <div class="bubble">
+                {{ m.content }}
+            </div>
+            </div>
+        </ng-container>
+        </div>
+
+        <!-- Input -->
+        <footer class="chat-input">
+        <input
+            type="text"
+            [(ngModel)]="input"
+            (keyup.enter)="send()"
+            [disabled]="loading"
+            placeholder="Escribe un mensaje..."
+            aria-label="Mensaje"
+            autocomplete="off"
+        />
+
+        <button
+            type="button"
+            (click)="send()"
+            [disabled]="loading || !input.trim()"
+        >
+            Enviar
+        </button>
+        </footer>
+
+    </aside>
+</div>
