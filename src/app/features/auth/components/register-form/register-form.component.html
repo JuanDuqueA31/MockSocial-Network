@@ -1,0 +1,153 @@
+<div class="l-register">
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="form l-register-form"
+  >
+
+    <!-- Username -->
+    <div class="form__field">
+      <input
+        type="text"
+        formControlName="username"
+        placeholder="User Name"
+        class="form__input"
+      />
+      <div class="form__error" *ngIf="username?.touched && username?.invalid">
+        <div *ngIf="username?.errors?.['required']">
+          El username es obligatorio.
+        </div>
+        <div *ngIf="username?.errors?.['minlength']">
+          El username es muy corto.
+        </div>
+      </div>
+    </div>
+
+    <!-- Name -->
+    <div class="form__field">
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Full Name"
+        class="form__input"
+      />
+      <div class="form__error" *ngIf="name?.touched && name?.invalid">
+        <div *ngIf="name?.errors?.['required']">
+          El nombre es obligatorio.
+        </div>
+        <div *ngIf="name?.errors?.['minlength']">
+          El nombre es muy corto.
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form__field">
+      <input
+        type="text"
+        formControlName="email"
+        placeholder="Email"
+        class="form__input"
+      />
+      <div class="form__error" *ngIf="email?.touched && email?.invalid">
+        <div *ngIf="email?.errors?.['required']">
+          El email es obligatorio.
+        </div>
+        <div *ngIf="email?.errors?.['email']">
+          Ingresa un email válido.
+        </div>
+      </div>
+    </div>
+
+    <!-- Age -->
+    <div class="form__field">
+      <input
+        type="number"
+        formControlName="age"
+        placeholder="Age"
+        class="form__input"
+      />
+      <div class="form__error" *ngIf="age?.touched && age?.invalid">
+        <div *ngIf="age?.errors?.['required']">
+          La edad es obligatoria.
+        </div>
+        <div *ngIf="age?.errors?.['min']">
+          La edad debe ser mayor a 18.
+        </div>
+      </div>
+    </div>
+
+    <!-- Birthday -->
+    <div class="form__field">
+      <input
+        type="date"
+        formControlName="birthday"
+        class="form__input"
+      />
+      <div class="form__error" *ngIf="birthday?.touched && birthday?.invalid">
+        <div *ngIf="birthday?.errors?.['required']">
+          La fecha de cumpleaños es obligatoria.
+        </div>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form__field">
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+        class="form__input"
+      />
+      <div class="form__error" *ngIf="password?.touched && password?.invalid">
+        <div *ngIf="password?.errors?.['required']">
+          La contraseña es obligatoria.
+        </div>
+        <div *ngIf="password?.errors?.['minlength']">
+          La contraseña es muy corta.
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form__field">
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirm Password"
+        class="form__input"
+      />
+      <div
+        class="form__error"
+        *ngIf="confirmPassword?.touched && (confirmPassword?.invalid || registerForm?.errors?.['passwordMismatch'])"
+      >
+        <div *ngIf="confirmPassword?.errors?.['required']">
+          Debes confirmar la contraseña.
+        </div>
+        <div *ngIf="registerForm?.errors?.['passwordMismatch']">
+          Las contraseñas no coinciden.
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <button
+      type="submit"
+      class="btn btn--primary l-register-form__submit"
+      [disabled]="registerForm.invalid"
+    >
+      Sign Up
+    </button>
+
+  </form>
+
+  <!-- TOGGLE -->
+  <button
+    class="btn btn--ghost l-register-form__toggle"
+    (click)="toggleForm.emit()"
+  >
+    I have an account
+  </button>
+
+</div>

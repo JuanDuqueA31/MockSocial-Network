@@ -1,0 +1,30 @@
+@use '../../../../../styles/variables' as *;
+
+.l-auth {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: map-get($space, xl) map-get($space, lg);
+    background-color: c(body-bg);
+    }
+
+    .l-auth__container {
+    width: 100%;
+    max-width: 420px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: map-get($space, lg);
+    }
+
+    .l-auth__title {
+    text-align: center;
+    }
+
+    .l-auth__form {
+    display: flex;
+    flex-direction: column;
+    gap: map-get($space, md);
+}

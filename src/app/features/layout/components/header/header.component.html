@@ -1,0 +1,19 @@
+<header class="l-header">
+    <mat-toolbar class="card, l-header__toolbar">
+
+        <div class="l-header__block">
+
+            <button mat-icon-button  aria-label="Abrir menú" class="btn btn--secondary l-header__toggle-button" (click)="toggleSidenav.emit()">
+                <mat-icon fontIcon="settings">settings</mat-icon>
+            </button>
+            <a routerLink="/" class="img-conteiner"><img src="img/logo.png" alt="Logo" class="l-header__logo"></a>
+        </div>
+        
+        <span class="spacer"></span>
+        
+        <div class="header-block" *ngIf="router.url === '/'">
+            <a class="btn btn--primary" routerLink="/login">Sign in</a>
+        </div>  
+        
+    </mat-toolbar>
+</header>

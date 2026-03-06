@@ -1,0 +1,38 @@
+@use '../../../../../styles/variables' as *;
+
+.form {
+  &__label {
+    display: block;
+    margin-bottom: map-get($space, xs);
+    color: c(label);
+    font-size: 0.875rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: c(input-bg);
+    border: 1px solid c(input-border);
+    border-radius: map-get($radius, sm);
+    color: c(text-on-dark);
+    font-family: $font-body;
+    outline: none;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+
+    &:focus {
+      border-color: c(primary);
+      box-shadow: 0 6px 18px rgba(37,99,235,0.08);
+    }
+
+    &.is-invalid {
+      border-color: #ef4444; // red
+      box-shadow: 0 6px 18px rgba(239,68,68,0.08);
+    }
+  }
+
+  &__help {
+    font-size: 0.85rem;
+    color: c(label);
+    margin-top: map-get($space, xs);
+  }
+}

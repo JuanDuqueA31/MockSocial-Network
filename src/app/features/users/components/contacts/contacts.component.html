@@ -1,0 +1,36 @@
+<div class="contacts">
+
+  <ul class="contacts__list">
+
+    <li
+      class="contacts__item"
+      *ngFor="let contact of contacts$ | async"
+    >
+
+      <!-- info clickable -->
+      <a
+        class="contacts__link"
+        [routerLink]="['/users/profile', contact.id]"
+      >
+        <span class="contacts__name">
+          {{ contact.username }}
+        </span>
+      </a>
+
+      <!-- action -->
+      <button
+        mat-icon-button
+        type="button"
+        class="contacts__chat-btn"
+        (click)="openChat(contact); $event.stopPropagation(); $event.preventDefault()"
+        [attr.aria-label]="'Chat with ' + contact.username"
+        title="Chat"
+      >
+        <mat-icon>chat</mat-icon>
+      </button>
+
+    </li>
+
+  </ul>
+
+</div>

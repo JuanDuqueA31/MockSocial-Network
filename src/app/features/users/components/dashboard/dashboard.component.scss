@@ -1,0 +1,95 @@
+@use '../../../../../styles/variables' as *;
+
+.l-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space, xl);
+  padding: map-get($space, lg);
+}
+
+.dashboard__section {
+  padding: map-get($space, lg);
+}
+
+/* PROFILE */
+.profile-card__title{
+    color: black;
+}
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space, md);
+}
+
+.profile-card__avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card__img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-card__header {
+  text-align: center;
+  background-color: white;
+}
+
+.profile-card__data {
+  margin-top: map-get($space, md);
+  background-color: white;
+}
+
+
+// LIST - POSTS ESTRUCTURE
+.dashboard-contacts-group{
+    display: flex;
+    flex-direction: row;
+    gap: map-get($space, lg);
+}
+/* LIST */
+
+.list--clean {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list-group{
+    display: flex;
+    flex: 3;
+    justify-content: center;
+    align-items: center;
+    gap: map-get($space, lg);
+    mat-icon{
+        height: fit-content;
+        width: fit-content;
+        font-size: 50px;
+        padding-bottom: 1rem;
+        color: white;
+    }
+}
+// posts
+
+.dashboard-posts-group{
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard__posts {
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* TITLES */
+
+.section-title {
+  margin-bottom: map-get($space, md);
+}
+
