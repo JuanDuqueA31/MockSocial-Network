@@ -1,0 +1,100 @@
+<div class="chat">
+
+  <!-- floating close button (cuando está abierto en modo mini) -->
+
+
+  <!-- ventana -->
+  <aside
+    class="chat__window card"
+    *ngIf="isOpen"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Chat"
+  >
+
+    <!-- HEADER -->
+    <header class="chat__header">
+
+      <ng-container *ngIf="persona?.user as user">
+        <div class="chat__person">
+
+          <img
+            *ngIf="user.image"
+            [src]="user.image"
+            [alt]="user.username"
+            class="chat__avatar"
+          />
+
+          <div class="chat__person-info">
+            <div class="chat__person-name">
+              {{ user.firstName }} {{ user.lastName }}
+            </div>
+
+            <div class="chat__person-sub">
+              {{ user.company?.title || user.username }}
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+
+      <button
+        mat-icon-button
+        class="chat__close"
+        type="button"
+        (click)="close()"
+        aria-label="Close"
+        title="Close"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+
+    </header>
+
+    <!-- MENSAJES -->
+    <div class="chat__messages" #scrollContainer>
+
+      <ng-container *ngFor="let m of messages; trackBy: trackByIndex">
+
+        <div
+          class="chat__row"
+          [class.chat__row--user]="m.role === 'user'"
+          [class.chat__row--assistant]="m.role === 'assistant'"
+        >
+          <div class="chat__bubble">
+            {{ m.content }}
+          </div>
+        </div>
+
+      </ng-container>
+
+    </div>
+
+    <!-- INPUT -->
+    <footer class="chat__input">
+
+      <input
+        class="chat__field"
+        type="text"
+        [(ngModel)]="input"
+        (keyup.enter)="send()"
+        [disabled]="loading"
+        placeholder="Type a message..."
+        aria-label="Message"
+        autocomplete="off"
+      />
+
+      <button
+        class="btn btn--primary"
+        type="button"
+        (click)="send()"
+        [disabled]="loading || !input.trim()"
+      >
+        Send
+      </button>
+
+    </footer>
+
+  </aside>
+
+</div>

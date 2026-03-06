@@ -1,0 +1,125 @@
+@use '../../../../../styles/variables' as *;
+
+.chat {
+  position: relative;
+}
+
+/* ventana */
+.chat__window {
+  position: fixed;
+  bottom: map-get($space, lg);
+  right: map-get($space, lg);
+
+  width: 360px;
+  height: 520px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* header */
+.chat__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: map-get($space, sm);
+
+  padding: map-get($space, sm) map-get($space, md);
+  border-bottom: 1px solid c(input-border);
+}
+
+.chat__person {
+  display: flex;
+  align-items: center;
+  gap: map-get($space, sm);
+}
+
+.chat__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat__person-name {
+  font-weight: 600;
+  color: c(text-on-dark);
+}
+
+.chat__person-sub {
+  font-size: 0.85rem;
+  color: c(text-on-dark-muted);
+}
+
+/* mensajes */
+.chat__messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: map-get($space, md);
+
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space, sm);
+}
+
+/* filas */
+.chat__row {
+  display: flex;
+}
+
+.chat__row--user {
+  justify-content: flex-end;
+}
+
+.chat__row--assistant {
+  justify-content: flex-start;
+}
+
+/* burbuja */
+.chat__bubble {
+  max-width: 75%;
+  padding: map-get($space, sm) map-get($space, md);
+  border-radius: map-get($radius, lg);
+
+  background: c(subcontainer-bg);
+  color: c(text-on-dark);
+}
+
+/* variante usuario */
+.chat__row--user .chat__bubble {
+  background: c(primary);
+  color: c(primary-contrast);
+}
+
+/* input area */
+.chat__input {
+  display: flex;
+  gap: map-get($space, sm);
+  padding: map-get($space, sm);
+  border-top: 1px solid c(input-border);
+}
+
+.chat__field {
+  flex: 1;
+  border-radius: 15px;
+  padding: 0 1rem;
+}
+
+/* floating close (opcional) */
+.chat__floating-close {
+  position: fixed;
+  bottom: calc(map-get($space, lg) + 540px);
+  right: map-get($space, lg);
+}
+
+.chat__close{
+    height: fit-content;
+    padding-top: 4px;
+    box-shadow: $shadow-standard;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+        &:hover{
+            transform: translateY(-2px);
+        }
+}

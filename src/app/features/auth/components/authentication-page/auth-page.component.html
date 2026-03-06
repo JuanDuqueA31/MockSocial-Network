@@ -1,0 +1,23 @@
+<section class="l-auth">
+
+    <div class="l-auth__container card">
+
+        <h1 class="l-auth__title">
+        {{ isLogin ? 'Login' : 'Register' }}
+        </h1>
+
+        <div class="l-auth__form">
+        <app-login-form
+            *ngIf="isLogin"
+            (toggleForm)="toggleForm()">
+        </app-login-form>
+
+        <app-register-form
+            *ngIf="!isLogin"
+            (toggleForm)="toggleForm()">
+        </app-register-form>
+        </div>
+
+    </div>
+
+</section>

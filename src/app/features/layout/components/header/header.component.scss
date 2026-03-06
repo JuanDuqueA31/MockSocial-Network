@@ -1,0 +1,42 @@
+@use '../../../../../styles/variables' as *;
+
+.l-header {
+
+    &__toolbar {
+        display: flex;
+        justify-content: space-between;
+        border-radius: 15px;
+    }
+
+    &__block{
+        height: 100%;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+    }
+
+    &__logo {
+    border-radius: 1rem;
+    height: 50px;
+    object-fit: contain;
+    box-shadow: $shadow-standard;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+
+    &__toggle-button{
+            height: fit-content;
+            padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+            box-shadow: $shadow-standard;
+            transition: transform 0.3s ease;
+            
+            &:hover{
+                transform: translateY(-2px);
+            }
+        }
+}

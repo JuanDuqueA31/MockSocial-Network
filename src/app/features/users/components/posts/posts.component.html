@@ -1,0 +1,51 @@
+<div class="post-feed">
+
+    <ng-container *ngIf="posts.length; else emptyFeed">
+
+    <article
+        class="post card"
+        *ngFor="let post of posts; trackBy: trackByPostId"
+    >
+        <!-- HEADER -->
+        <header class="post__header">
+
+        <div class="post__author" *ngIf="getUser(post) as author">
+
+            <img
+            class="post__avatar"
+            [src]="author.image"
+            [alt]="author.username"
+            />
+
+            <div class="post__author-info">
+            <span class="post__username">
+                {{ author.username }}
+            </span>
+
+            <time class="post__date">
+                {{ post.createdAt | date:'mediumDate' }}
+            </time>
+            </div>
+
+        </div>
+
+        </header>
+
+        <!-- CONTENT -->
+        <p class="post__content">
+        {{ post.content }}
+        </p>
+
+        <!-- FOOTER -->
+        <footer class="post__footer">
+        <span class="post__likes">❤️ {{ post.likes }}</span>
+        </footer>
+
+    </article>
+
+    </ng-container>
+    
+</div>
+<ng-template #emptyFeed>
+  <p class="post__empty">No hay publicaciones aún.</p>
+</ng-template>

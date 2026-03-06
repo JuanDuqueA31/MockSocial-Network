@@ -1,0 +1,54 @@
+<div class="l-dashboard">
+
+  <!-- PROFILE -->
+  <section class="dashboard__section card profile-card">
+
+    <div class="profile-card__avatar">
+      <img src="img/avatar.webp" alt="User avatar" class="profile-card__img">
+    </div>
+
+    <header class="profile-card__header card" *ngIf="user$ | async as user">
+      <h1 class="profile-card__title">{{ user.userName }}</h1>
+      <p class="text-on-dark">
+        Hello! I logged into the mock app and now I am seeing my dashboard.
+        In this section there is some data I provided when registering.
+      </p>
+    </header>
+
+    <div class="profile-card__data card" *ngIf="user$ | async as user">
+      <ul class="list list--clean">
+        <li><strong>Name:</strong> {{ user.name }}</li>
+        <li><strong>Age:</strong> {{ user.age }}</li>
+        <li><strong>Birthday:</strong> {{ user.birthday }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <div class="dashboard-contacts-group">
+  <!-- CONTACTS -->
+  <section class="dashboard__section card">
+    <div class="contact-list-group">
+        <h2 class="section-title">Contacts</h2>
+        <mat-icon>groups</mat-icon>
+    </div>
+    
+    <app-contacts></app-contacts>
+  </section>
+
+  <!-- POSTS -->
+   <div class="dashboard-posts-group">
+
+        <section class="dashboard__section card dashboard__posts dashboard__posts-body">
+            <h2 class="section-title">Latest Posts</h2>
+            <app-posts></app-posts>
+        </section>
+
+            <app-chat></app-chat>
+
+   </div>
+    
+  </div>
+
+</div>

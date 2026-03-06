@@ -1,0 +1,104 @@
+// _variables.scss
+
+// ---------- base units ----------
+$base-font-size: 16px; // 1rem = 16px
+$root-rem: 1rem; // alias
+$scale-factor: 1.125; // modular scale (optional)
+
+// ---------- colors (semantic) ----------
+$colors: (
+    body-bg: #0f1724,         // dark body color (dark theme example)
+    header-bg: #071029,
+    footer-bg: #081426,
+    container-bg: #0b1220,    // main container
+    subcontainer-bg: #131f34, // cards, sections
+    primary: #2563eb,         // important button (blue)
+    primary-contrast: #ffffff,
+    neutral: #94a3b8,         // general accents
+    accent: #f97316,          // small accent (orange)
+    button: #1f2937,          // regular button
+    text-on-dark: #e6eef8,    // text readable on dark
+    text-on-dark-muted: #b8c4d6,
+    text-on-light: #0b1220,   // text readable on light
+    label: #9aa6b8,
+    input-bg: #071429,
+    input-border: #233445
+);
+
+// helper to fetch color
+@function c($key) {
+    @return map-get($colors, $key);
+}
+
+// ---------- typography ----------
+$font-heading: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+$typography: (
+  h1: (size: 2.25rem, weight: 700, line-height: 1.05), // ~36px
+  h2: (size: 1.75rem, weight: 600, line-height: 1.15), // ~28px
+  h3: (size: 1.25rem, weight: 600, line-height: 1.2),  // ~20px
+  p:  (size: 1rem,   weight: 400, line-height: 1.6)   // 16px
+);
+
+// mobile overrides
+$typography-mobile: (
+    h1: (size: 1.5rem, weight: 700, line-height: 1.05), // ~24px
+    h2: (size: 1.25rem, weight: 600, line-height: 1.15),
+    h3: (size: 1.125rem, weight: 600, line-height: 1.2),
+    p:  (size: 0.9375rem, weight: 400, line-height: 1.5)
+);
+
+// ---------- spacing ----------
+$space: (
+    xs: 0.25rem,
+    sm: 0.5rem,
+    md: 1rem,
+    lg: 1.5rem,
+    xl: 2.5rem
+);
+
+// ---------- shadow ----------
+$shadow-standard: 0 6px 18px rgba(2,6,23,0.6), 0 2px 4px rgba(2,6,23,0.4);
+
+// ---------- radii ----------
+$radius: (
+    sm: 4px,
+    md: 8px,
+    lg: 12px
+);
+
+// ---------- breakpoints ----------
+$breakpoints: (
+    mobile: 600px,
+    tablet: 900px,
+    desktop: 1200px
+    );
+
+// ---------- mixins ----------
+@mixin respond($bp) {
+    $val: map-get($breakpoints, $bp);
+    @if $val {
+        @media (max-width: $val) {
+        @content;
+        }
+    } @else {
+        @warn "Unknown breakpoint `#{$bp}`.";
+    }
+}
+
+    @mixin font-from-map($elem) {
+    $map: map-get($typography, $elem);
+    font-family: $font-heading;
+    font-weight: map-get($map, weight);
+    line-height: map-get($map, line-height);
+    font-size: map-get($map, size);
+    @if $elem == p {
+        font-family: $font-body;
+    }
+    }
+
+// responsive font mixin (uses clamp for smooth scaling)
+@mixin fluid-font($min, $preferred, $max) {
+    font-size: clamp($min, $preferred, $max);
+}

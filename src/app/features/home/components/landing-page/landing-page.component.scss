@@ -1,0 +1,158 @@
+@use '../../../../../styles/variables' as *;
+
+/* ==========================
+   Landing Container
+========================== */
+.l-landing {
+  border-top: 2px solid c(primary);
+  border-bottom: 2px solid c(primary);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  
+  color: c(text-on-dark);
+  
+  ::before{
+    z-index: -100;
+    background-color: c(body-bg);
+  }
+}
+
+/* ==========================
+   HERO
+========================== */
+.l-landing__hero {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+
+  color: c(text-on-dark);
+  padding: map-get($space, xl) map-get($space, lg);
+}
+
+/* Contenido interno del hero */
+.l-landing__hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: map-get($space, md);
+  z-index: 1;
+}
+
+/* ==========================
+   Background Image
+========================== */
+.l-landing__bg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: 30% center;
+
+  z-index: -1;
+  pointer-events: none;
+
+  filter: blur(4px) brightness(0.5);
+  transform: scale(1.08);
+}
+
+/* ==========================
+   CV SECTION
+========================== */
+.l-landing__cv {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: map-get($space, xl);
+
+  width: 100%;
+  min-height: 95dvh;
+  padding: map-get($space, xl) 5dvw;
+
+  background-color: c(container-bg);
+  
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+    padding: map-get($space, lg) 5dvw;
+  }
+
+  p, li{
+    color: c(text-on-dark-muted);
+  }
+}
+
+.l-lading__cv-group-1{
+  display: flex;
+  flex-direction: row;
+  gap: map-get($space, md);
+}
+/* ==========================
+   PROFILE
+========================== */
+.l-landing__profile {
+  flex: 1 1 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: map-get($space, md);
+
+  padding: map-get($space, xl) 0;
+  text-align: center;
+
+  color: c(text-on-light);
+}
+
+/* Imagen perfil */
+.l-landing__profile-img {
+  display: block;
+  width: clamp(200px, 25vw, 300px);
+  border-radius: 50%;
+  object-fit: cover;
+
+  box-shadow: 0 0 0 2px c(primary);
+}
+
+/* ==========================
+   SKILLS
+========================== */
+.l-landing__skills {
+  flex: 1 1 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: map-get($space, lg);
+
+  padding: map-get($space, xl) 0;
+  text-align: center;
+
+  color: c(text-on-light);
+}
+
+.l-landing__skills-group {
+  width: 100%;
+}
+
+/* ==========================
+   EXPERIENCE / RESUME
+========================== */
+.l-landing__experience,
+.l-landing__resume {
+  width: 100%;
+}

@@ -1,0 +1,61 @@
+@use '../../../../../styles/variables' as *;
+
+.contacts {
+  width: 100%;
+}
+
+.contacts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space, sm);
+}
+
+/* cada fila */
+.contacts__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: map-get($space, sm) map-get($space, md);
+  border-radius: map-get($radius, md);
+
+  background-color: gray;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
+/* link del usuario */
+.contacts__link {
+  text-decoration: none;
+  color: c(text-on-dark);
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  gap: map-get($space, sm);
+}
+
+.contacts__name {
+  font-weight: 500;
+  color: c(text-on-dark);
+}
+
+/* botón chat */
+.contacts__chat-btn {
+
+    height: fit-content;
+    padding-top: 0.5rem;
+    box-shadow: $shadow-standard;
+    transition: transform 0.3s ease;
+    
+        &:hover{
+            transform: translateY(-2px);
+        }
+}

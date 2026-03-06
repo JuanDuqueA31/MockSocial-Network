@@ -1,4 +1,5 @@
-@use './app/variables' as *;
+@use './styles/variables' as *;
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -18,6 +19,10 @@ html {
 
 *, *::before, *::after {
     box-sizing: inherit;
+}
+
+a{
+    text-decoration: none;
 }
 
 body {
@@ -48,4 +53,134 @@ p  { @include font-from-map(p); }
     h2 { font-size: map-get(map-get($typography-mobile, h2), size); }
     h3 { font-size: map-get(map-get($typography-mobile, h3), size); }
     p  { font-size: map-get(map-get($typography-mobile, p), size); }
+}
+
+// buttons
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: map-get($radius, sm);
+    border: none;
+    cursor: pointer;
+    font-family: $font-body;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.12s ease;
+
+    &--primary {
+        background: c(primary);
+        color: c(primary-contrast);
+        box-shadow: 0 6px 18px rgba(37,99,235,0.18);
+        &:hover { transform: translateY(-2px); }
+    }
+
+    &--secondary {
+        background: c(button);
+        color: c(primary-contrast);
+        border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    &--ghost {
+        background: transparent;
+        color: c(text-on-dark);
+        transition: color 0.3s ease;
+        &:hover{
+            color: c(primary);
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    padding: 0 map-get($space, md);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+// card
+.card {
+    background: c(subcontainer-bg);
+    border-radius: map-get($radius, md);
+    padding: map-get($space, lg);
+    box-shadow: $shadow-standard;
+    &__title { @include font-from-map(h3); color: c(text-on-dark); }
+    &__body { color: c(text-on-dark); font-family: $font-body; }
+}
+
+.l-header {
+    background: c(header-bg);
+    padding: map-get($space, md);
+    box-shadow: $shadow-standard;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.form {
+  &__label {
+    margin-bottom: map-get($space, xs);
+    color: c(label);
+    font-size: 0.875rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: c(input-bg);
+    border: 1px solid c(input-border);
+    border-radius: map-get($radius, sm);
+    color: c(text-on-dark-muted);
+    font-family: $font-body;
+    outline: none;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+    margin: map-get($space, sm) 0;
+
+    &:focus {
+      border-color: c(primary);
+      box-shadow: 0 6px 18px rgba(37,99,235,0.08);
+    }
+
+    &.is-invalid {
+      border-color: #ef4444; // red
+      box-shadow: 0 6px 18px rgba(239,68,68,0.08);
+    }
+  }
+
+  &__help {
+    font-size: 0.85rem;
+    color: c(label);
+    margin-top: map-get($space, xs);
+  }
+
+  &__error{
+    color: c(text-on-dark-muted);
+  }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    }
+}
+
+
+app-posts .post-feed::-webkit-scrollbar {
+  width: 8px;
+}
+
+app-posts .post-feed ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+app-posts .post-feed::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 8px;
+}
+
+app-posts .post-feed ::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
